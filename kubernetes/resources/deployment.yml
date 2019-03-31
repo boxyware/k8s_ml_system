@@ -1,0 +1,51 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: prediction-service
+  namespace: force
+  labels:
+    app: force
+    tier: analytics
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: prediction-service
+        app: force
+        tier: analytics
+    spec:
+      containers:
+        - name: prediction-service
+          image: boxyware/force-side-service
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "1024Mi"
+              cpu: "550m"
+          volumeMounts:
+            - name: model-volume
+              mountPath: /models/force
+          readinessProbe:
+            httpGet:
+              path: /version
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /version
+              port: 8080
+            initialDelaySeconds: 20
+            periodSeconds: 15
+      volumes:
+        - name: model-volume
+          persistentVolumeClaim:
+            claimName: model-pvc

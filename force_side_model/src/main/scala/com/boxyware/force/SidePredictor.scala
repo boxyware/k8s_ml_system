@@ -35,7 +35,7 @@ object SidePredictor {
     val speciesIndexer = new StringIndexer()
       .setInputCol("species")
       .setOutputCol("speciesId")
-      .setHandleInvalid("keep")         // In the muestra doesn't appear all the possible values
+      .setHandleInvalid("keep")         // In the sample doesn't appear all the possible values
 
     val genderIndexer = new StringIndexer()
       .setInputCol("gender")
@@ -44,7 +44,7 @@ object SidePredictor {
     val homeworldIndexer = new StringIndexer()
       .setInputCol("homeworld")
       .setOutputCol("homeworldId")
-      .setHandleInvalid("keep")         // In the muestra doesn't appear all the possible values
+      .setHandleInvalid("keep")         // In the sample doesn't appear all the possible values
 
     val assembler = new VectorAssembler()
       .setInputCols(Array("midichlorianId", "speciesId", "genderId", "homeworldId"))

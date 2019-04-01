@@ -58,7 +58,7 @@ spark-submit \
     --deploy-mode cluster \
     --name side-model \
     --class com.boxyware.force.SidePredictor \
-    --conf spark.executor.instances=1 \
+    --conf spark.executor.instances=2 \
     --conf spark.kubernetes.namespace=force \
     --conf spark.kubernetes.container.image=boxyware/force-side-model \
     --conf spark.kubernetes.driver.volumes.persistentVolumeClaim.model-volume.mount.path=/models \

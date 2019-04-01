@@ -1,6 +1,6 @@
 # TL;DR
 
-This Git repository contains the code used for the Medium article [**A Reactive Machine Learning system on top K8s**]().
+This Git repository contains the code used for the Medium article [**A Reactive Machine Learning system on top K8s**](https://medium.com/@manuel.lara_82510/a-reactive-machine-learning-system-on-top-of-kubernetes-a9c812796afe).
 
 In this repository you will find a service that is capable to predict if a given subject will become a Jedi or Sith or none of them.
 
@@ -22,4 +22,4 @@ The best way to deploy this analytical system is following these steps:
 2. With the Docker image created in the previous point, the next step is to deploy the REST service on Kubernetes. To do this, go to **kubernetes** folder and follow the isntructions described in the README.md that you can find there.
 3. The REST service has been deployed with a shared volume where the predictive model is supposed to it will be. Now is time to run a the model learning component. To do this, go to **spark_force_side_model** folder and follow the isntructions described in the README.md that you can find there.
 
->In the README.md file that you could find the **kubernetes** folder there are an example about how to test the service.
+>In the README.md file that you could find inside of the **kubernetes** folder there are an example about how to test the whole service.
